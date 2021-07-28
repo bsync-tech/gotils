@@ -7,6 +7,7 @@ import (
 )
 
 var TIME_FORMAT_SECOND = "2006-01-02 15:34:05.000"
+var TIME_FORMAT_DATE = "2006-01-02"
 
 func SecondsNow() *time.Time {
 	time.LoadLocation("Asia/Shanghai")
@@ -42,4 +43,13 @@ func Parse(d string) (*time.Time, error) {
 		return nil, err
 	}
 	return &t, nil
+}
+
+func Today() string {
+	loc, err := time.LoadLocation(DEFAULT_LOCATION)
+	if err != nil {
+		return ""
+	}
+	time.Local = loc
+	return time.Now().Format(TIME_FORMAT_DATE)
 }
