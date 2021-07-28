@@ -122,3 +122,22 @@ func StringsToInts(ss []string) (ints []int, err error) {
 	}
 	return
 }
+
+func interface2string(v interface{}) string {
+	switch v.(type) {
+	case string:
+		return v.(string)
+	case int, int64:
+		return strconv.FormatInt(v.(int64), 10)
+	case uint, uint64:
+		return strconv.FormatUint(v.(uint64), 10)
+	case float32:
+		return strconv.FormatFloat(v.(float64), 'f', 6, 32)
+	case float64:
+		return strconv.FormatFloat(v.(float64), 'f', 6, 64)
+	case bool:
+		return strconv.FormatBool(v.(bool))
+	default:
+		return ""
+	}
+}
