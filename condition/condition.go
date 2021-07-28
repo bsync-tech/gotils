@@ -1,4 +1,4 @@
-package xconditions
+package conditions
 
 // IfThen evaluates a condition, if true returns the parameters otherwise nil
 func IfThen(condition bool, a interface{}) interface{} {
