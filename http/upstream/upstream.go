@@ -15,10 +15,6 @@ import (
 	"net/url"
 	"sync"
 	"time"
-
-	"gitlab.intsig.net/qxb_cus/common/proxy"
-
-	log "github.com/cihub/seelog"
 )
 
 type Peer struct {
@@ -50,12 +46,12 @@ func NewUpstream() *Upstream {
 						return nil, err
 					}
 
-					log.Debugf("Connect done, [local] %s [remote] %s", conn.LocalAddr().String(), conn.RemoteAddr().String())
+					// log.Debugf("Connect done, [local] %s [remote] %s", conn.LocalAddr().String(), conn.RemoteAddr().String())
 					return conn, err
 				},
 				MaxIdleConnsPerHost:   500,
 				ResponseHeaderTimeout: time.Second * 60,
-				Proxy:                 proxy.GetInstance().GetProxy(),
+				Proxy:                 http.ProxyFromEnvironment,
 			},
 			Timeout: time.Duration(300 * time.Second),
 		},
@@ -85,7 +81,7 @@ func NewUpstreamWithoutProxy() *Upstream {
 						return nil, err
 					}
 
-					log.Debugf("Connect done, [local] %s [remote] %s", conn.LocalAddr().String(), conn.RemoteAddr().String())
+					// log.Debugf("Connect done, [local] %s [remote] %s", conn.LocalAddr().String(), conn.RemoteAddr().String())
 					return conn, err
 				},
 				MaxIdleConnsPerHost:   500,
@@ -153,7 +149,7 @@ func NewHTTPSUpstream(caCrtPath string) *Upstream {
 				},
 				MaxIdleConnsPerHost:   500,
 				ResponseHeaderTimeout: time.Second * 60,
-				Proxy:                 proxy.GetInstance().GetProxy(),
+				Proxy:                 http.ProxyFromEnvironment,
 			},
 			Timeout: time.Duration(60 * time.Second),
 		},
@@ -248,40 +244,6 @@ func NewUpstreamWithTimeout(dial, read, write, keepalive time.Duration) *Upstrea
 		Client:      client,
 	}
 }
-
-//func NewUpstreamWithProxy() *Upstream {
-//	client := &HttpClient{
-//		Client: http.Client{
-//			Transport: &http.Transport{
-//				Dial: func(network, addr string) (net.Conn, error) {
-//					dial := net.Dialer{
-//						Timeout:   30 * time.Second,
-//						KeepAlive: 30 * time.Second,
-//					}
-
-//					conn, err := dial.Dial(network, addr)
-//					if err != nil {
-//						return nil, err
-//					}
-
-//					//					log.Debugf("Connect done, [local] %s [remote] %s", conn.LocalAddr().String(), conn.RemoteAddr().String())
-//					return conn, err
-//				},
-//				MaxIdleConnsPerHost:   500,
-//				ResponseHeaderTimeout: time.Second * 30,
-//				Proxy:                 http.ProxyFromEnvironment,
-//			},
-//			Timeout: time.Duration(60 * time.Second),
-//		},
-//	}
-
-//	return &Upstream{
-//		peers:       list.New(),
-//		index:       0,
-//		totalweight: 0,
-//		Client:      client,
-//	}
-//}
 
 func (us *Upstream) AddPeer(host string, weight uint) {
 	us.mutex.Lock()
