@@ -14,7 +14,6 @@ require (
 	github.com/mattn/go-isatty v0.0.12
 	github.com/shirou/gopsutil/v3 v3.21.6
 	github.com/stretchr/testify v1.7.0
-	gitlab.intsig.net/qxb_cus/common v0.0.0-20210621100907-bf6373b2213a
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c
 )

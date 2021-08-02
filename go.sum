@@ -610,8 +610,6 @@ github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9de
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/gopher-lua v0.0.0-20171031051903-609c9cd26973/go.mod h1:aEV29XrmTYFr3CiRxZeGHpkvbwq+prZduBqMaascyCU=
 github.com/z-division/go-zookeeper v0.0.0-20190128072838-6d7457066b9b/go.mod h1:JNALoWa+nCXR8SmgLluHcBNVJgyejzpKPZk9pX2yXXE=
-gitlab.intsig.net/qxb_cus/common v0.0.0-20210621100907-bf6373b2213a h1:EP+zkxIdYXtIWwZteDbgeV2AckmhYMhEeHb88YKBQkE=
-gitlab.intsig.net/qxb_cus/common v0.0.0-20210621100907-bf6373b2213a/go.mod h1:QQklbNZ/NeK4yYJep6WaaT/hgtghYxFz81oyBHCv6eo=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.etcd.io/bbolt v1.3.3/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.etcd.io/etcd v0.0.0-20191023171146-3cf2f69b5738/go.mod h1:dnLIgRNXwCJa5e+c6mIZCrds/GIG4ncV9HhK5PX7jPg=
